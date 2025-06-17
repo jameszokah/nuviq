@@ -38,7 +38,7 @@ COPY voice-sample.mp3 ./voice-sample.mp3
 RUN mkdir -p /cache
 
 # Set default environment variables
-ENV PORT=4123
+ENV PORT=7860
 ENV EXAGGERATION=0.5
 ENV CFG_WEIGHT=0.5
 ENV TEMPERATURE=0.8
