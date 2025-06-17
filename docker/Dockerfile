@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir fastapi uvicorn[standard] python-dotenv python-mu
 # Copy application code
 COPY app/ ./app/
 COPY main.py ./
-COPY tests-1/ ./tests/
+COPY tests/ ./tests/
 
 # Copy voice sample if it exists (optional, can be mounted)
 COPY voice-sample.mp3 ./voice-sample.mp3
