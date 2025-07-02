@@ -45,4 +45,34 @@ class TTSRequest(BaseModel):
             allowed_qualities = ['fast', 'balanced', 'high']
             if v not in allowed_qualities:
                 raise ValueError(f'streaming_quality must be one of: {", ".join(allowed_qualities)}')
-        return v 
+        return v
+
+
+class VoiceCreateRequest(BaseModel):
+    """Request model for creating a voice"""
+    
+    name: str = Field(..., description="Name of the voice", min_length=1, max_length=100)
+    description: Optional[str] = Field(None, description="Description of the voice")
+    tags: Optional[list[str]] = Field([], description="Tags to categorize the voice")
+    metadata: Optional[dict] = Field({}, description="Additional metadata for the voice")
+    
+    @validator('name')
+    def validate_name(cls, v):
+        if not v or not v.strip():
+            raise ValueError('Voice name cannot be empty')
+        return v.strip()
+
+
+class VoiceUpdateRequest(BaseModel):
+    """Request model for updating a voice"""
+    
+    name: Optional[str] = Field(None, description="Name of the voice", min_length=1, max_length=100)
+    description: Optional[str] = Field(None, description="Description of the voice")
+    tags: Optional[list[str]] = Field(None, description="Tags to categorize the voice")
+    metadata: Optional[dict] = Field(None, description="Additional metadata for the voice")
+    
+    @validator('name')
+    def validate_name(cls, v):
+        if v is not None and not v.strip():
+            raise ValueError('Voice name cannot be empty if provided')
+        return v.strip() if v else None 

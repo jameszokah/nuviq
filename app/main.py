@@ -8,8 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.core.tts_model import initialize_model
+from app.core.voices import initialize_voices, start_cache_cleanup_task
 from app.api.router import api_router
 from app.config import Config
+import asyncio
 
 
 ascii_art = r"""
@@ -28,9 +30,19 @@ async def lifespan(app: FastAPI):
     # Startup
     print(ascii_art)
     await initialize_model()
+    await initialize_voices()
+    
+    # Start voice cache cleanup task in the background
+    task = asyncio.create_task(start_cache_cleanup_task())
+    
     yield
+    
     # Shutdown (cleanup if needed)
-    pass
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
 
 
 # Create FastAPI app

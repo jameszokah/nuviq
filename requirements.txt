@@ -17,6 +17,12 @@ pydantic>=2.0.0
 # Required for FastAPI file upload support
 python-multipart>=0.0.6
 
+# Async file operations
+aiofiles>=23.0.0
+
+# Cloud storage
+boto3>=1.35.99
+
 # Environment variables
 python-dotenv>=1.0.0
 

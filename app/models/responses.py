@@ -100,4 +100,26 @@ class APIInfoResponse(BaseModel):
     memory_info: Optional[Dict[str, float]] = None
     recent_requests: Optional[List[Dict[str, Any]]] = None
     uptime_info: Optional[Dict[str, Any]] = None
-    error: Optional[str] = None 
+    error: Optional[str] = None
+
+
+class VoiceResponse(BaseModel):
+    """Voice information response model"""
+    
+    id: str
+    name: str
+    description: Optional[str] = None
+    created_at: int  # Unix timestamp
+    updated_at: int  # Unix timestamp
+    tags: List[str] = []
+    file_path: str
+    file_size_bytes: int
+    duration_seconds: Optional[float] = None
+    metadata: Dict[str, Any] = {}
+
+
+class VoiceListResponse(BaseModel):
+    """Voice list response model"""
+    
+    total: int
+    voices: List[VoiceResponse] 

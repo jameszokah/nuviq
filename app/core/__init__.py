@@ -30,6 +30,17 @@ from .status import (
     get_tts_statistics,
     clear_tts_history
 )
+from .voices import (
+    initialize_voices,
+    get_voice_file,
+    create_voice,
+    update_voice,
+    delete_voice,
+    list_voices,
+    get_voice_metadata,
+    clean_voice_cache,
+    start_cache_cleanup_task
+)
 
 __all__ = [
     "get_memory_info",
@@ -57,5 +68,14 @@ __all__ = [
     "get_tts_status",
     "get_tts_history",
     "get_tts_statistics",
-    "clear_tts_history"
+    "clear_tts_history",
+    "initialize_voices",
+    "get_voice_file",
+    "create_voice",
+    "update_voice",
+    "delete_voice",
+    "list_voices",
+    "get_voice_metadata",
+    "clean_voice_cache",
+    "start_cache_cleanup_task"
 ] 

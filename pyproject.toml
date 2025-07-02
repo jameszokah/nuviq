@@ -2,7 +2,7 @@
 name = "chatterbox-tts-api"
 version = "1.3.0"
 description = "REST API for Chatterbox TTS with OpenAI compatibility"
-authors = [{ name = "Travis Van Nimwegen", email = "tts@travis2.com" }]
+authors = [{ name = "James Zokah", email = "jameszokah@gmail.com" }]
 readme = "README.md"
 license = { text = "AGPLv3" }
 requires-python = ">=3.11"
@@ -21,8 +21,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/travisvn/chatterbox-tts-api"
-Repository = "https://github.com/travisvn/chatterbox-tts-api"
+Homepage = "https://github.com/jameszokah/nuviq"
+Repository = "https://github.com/jameszokah/nuviq"
 
 [project.optional-dependencies]
 dev = [

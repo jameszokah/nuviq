@@ -25,6 +25,11 @@ ENDPOINT_ALIASES: Dict[str, List[str]] = {
     "/status/statistics": ["/v1/status/statistics", "/stats"],
     "/status/history/clear": ["/v1/status/history/clear"],
     "/info": ["/v1/info", "/api/info"],
+    # Voice management endpoints
+    "/voices": ["/v1/voices", "/voice-library"],
+    "/voices/{voice_id}": ["/v1/voices/{voice_id}", "/voice-library/{voice_id}"],
+    "/voices/{voice_id}/audio": ["/v1/voices/{voice_id}/audio", "/voice-library/{voice_id}/audio"],
+    "/voices/json": ["/v1/voices/json"],
 }
 
 
