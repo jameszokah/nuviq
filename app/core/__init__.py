@@ -39,7 +39,8 @@ from .voices import (
     list_voices,
     get_voice_metadata,
     clean_voice_cache,
-    start_cache_cleanup_task
+    start_cache_cleanup_task,
+    get_voice_by_name
 )
 
 __all__ = [
@@ -76,6 +77,7 @@ __all__ = [
     "delete_voice",
     "list_voices",
     "get_voice_metadata",
+    "get_voice_by_name",
     "clean_voice_cache",
     "start_cache_cleanup_task"
 ] 
