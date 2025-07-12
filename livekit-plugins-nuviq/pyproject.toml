@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "livekit-plugins-elevenlabs"
+name = "livekit-plugins-nuviq"
 dynamic = ["version"]
-description = "Agent Framework plugin for voice synthesis with ElevenLabs' API."
+description = "Agent Framework plugin for voice synthesis with Nuviq' API."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.9.0"
 authors = [{ name = "LiveKit", email = "hello@livekit.io" }]
-keywords = ["webrtc", "realtime", "audio", "video", "livekit", "elevenlabs"]
+keywords = ["webrtc", "realtime", "audio", "video", "livekit", "nuviq"]
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",
@@ -30,7 +30,7 @@ Website = "https://livekit.io/"
 Source = "https://github.com/livekit/agents"
 
 [tool.hatch.version]
-path = "livekit/plugins/elevenlabs/version.py"
+path = "livekit/plugins/nuviq/version.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["livekit"]

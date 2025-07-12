@@ -12,24 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""ElevenLabs plugin for LiveKit Agents
+"""Nuviq plugin for LiveKit Agents
 
-See https://docs.livekit.io/agents/integrations/tts/elevenlabs/ for more information.
+See https://github.com/nuviq/chatterbox-api for more information.
 """
 
 from .models import TTSEncoding, TTSModels
 from .stt import STT
-from .tts import DEFAULT_VOICE_ID, TTS, Voice, VoiceSettings
+from .tts import TTS, Voice
 from .version import __version__
 
 __all__ = [
     "STT",
     "TTS",
     "Voice",
-    "VoiceSettings",
     "TTSEncoding",
     "TTSModels",
-    "DEFAULT_VOICE_ID",
     "__version__",
 ]
 
@@ -38,12 +36,12 @@ from livekit.agents import Plugin
 from .log import logger
 
 
-class ElevenLabsPlugin(Plugin):
+class NuviqPlugin(Plugin):
     def __init__(self) -> None:
         super().__init__(__name__, __version__, __package__, logger)
 
 
-Plugin.register_plugin(ElevenLabsPlugin())
+Plugin.register_plugin(NuviqPlugin())
 
 # Cleanup docs of unexported modules
 _module = dir()
