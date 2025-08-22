@@ -1,6 +1,7 @@
 import logging
 
 from dotenv import load_dotenv
+import os
 from livekit.agents import (
     Agent,
     AgentSession,
@@ -23,6 +24,8 @@ logger = logging.getLogger("agent")
 
 load_dotenv(".env.local")
 
+
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
 
 class Assistant(Agent):
     def __init__(self) -> None:
@@ -65,10 +68,10 @@ async def entrypoint(ctx: JobContext):
     session = AgentSession(
         # A Large Language Model (LLM) is your agent's brain, processing user input and generating a response
         # See all providers at https://docs.livekit.io/agents/integrations/llm/
-        llm=groq.LLM(model="gpt-4o-mini"),
+        llm = groq.LLM(model="llama-3.3-70b-versatile", api_key=GROQ_API_KEY),
         # Speech-to-text (STT) is your agent's ears, turning the user's speech into text that the LLM can understand
         # See all providers at https://docs.livekit.io/agents/integrations/stt/
-        stt=groq.STT(model="whisper-large", ),
+        stt = groq.STT(model="whisper-large-v3-turbo", api_key=GROQ_API_KEY),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
         # See all providers at https://docs.livekit.io/agents/integrations/tts/
         tts=nuviq.TTS(model="noviq_tts_1", voice="6f84f4b8-58a2-430c-8c79-688dad597532"),
