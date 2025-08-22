@@ -1,3 +1,3 @@
 import logging
 
-logger = logging.getLogger("livekit.plugins.elevenlabs")
+logger = logging.getLogger("livekit.plugins.nuviq")
