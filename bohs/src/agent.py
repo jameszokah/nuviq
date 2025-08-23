@@ -16,7 +16,7 @@ from livekit.agents import (
 )
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import MetricsCollectedEvent
-from livekit.plugins import  groq, noise_cancellation, silero
+from livekit.plugins import  groq, noise_cancellation, silero, elevenlabs
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from livekit_plugins_nuviq.livekit.plugins import nuviq
 
@@ -26,6 +26,7 @@ load_dotenv(".env.local")
 
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
+ELEVENLABS_API_KEY = os.environ.get('ELEVENLABS_API_KEY', '')
 
 class Assistant(Agent):
     def __init__(self) -> None:
@@ -74,7 +75,8 @@ async def entrypoint(ctx: JobContext):
         stt = groq.STT(model="whisper-large-v3-turbo", api_key=GROQ_API_KEY),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
         # See all providers at https://docs.livekit.io/agents/integrations/tts/
-        tts=nuviq.TTS(model="noviq_tts_1", voice="6f84f4b8-58a2-430c-8c79-688dad597532"),
+        # tts=nuviq.TTS(model="noviq_tts_1", voice="6f84f4b8-58a2-430c-8c79-688dad597532"),
+        tts=elevenlabs.TTS(api_key=ELEVENLABS_API_KEY),
         # VAD and turn detection are used to determine when the user is speaking and when the agent should respond
         # See more at https://docs.livekit.io/agents/build/turns
         turn_detection=MultilingualModel(),
